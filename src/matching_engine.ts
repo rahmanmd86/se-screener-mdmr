@@ -7,17 +7,19 @@ export class MatchingEngine{
 
     // Calculates matched respondents by reading participants and respondent data
     // Returns the list of matched respodents as objects
-    getMatchedRespondents(participantsData: any, respondentsData: any) {
-        let matchedRespondents = [];
+    getMatchedRespondents(
+        participantsData: {professionalJobTitles: string[], professionalIndustry: string[], cities: {location: {location: {latitude: number, longitude: number}}}[]}, 
+        respondentsData: {firstName: string, jobTitle: string, industry: string, latitude: string, longitude: string}[]) {
+        let matchedRespondents: {name: string, distance: number, score: number}[] = [];
         let titles = participantsData.professionalJobTitles;
         let industries = participantsData.professionalIndustry;
         let title = "";
         let industry = [];
         let respLatLon = {
-            lat: "",
-            lon: ""
+            lat: '',
+            lon: ''
         };
-        let industryCompare, industryMatch, titleCompare, titleMatch, distance, distanceMatch, totalScore;
+        let industryCompare, industryMatch, titleCompare, titleMatch, distance: any, distanceMatch, totalScore;
 
         console.log("[!] Processing respondents data to match participants needs...")
         for(let i=0; i<respondentsData.length; i++){
@@ -55,7 +57,8 @@ export class MatchingEngine{
     
     // Calculates the distance between participant cities location and respondents location
     // Returns the minimun distance as KM
-    distanceCalculator(cities: any, respLocation: any): number{
+    distanceCalculator(cities: {location: {location: {latitude: number, longitude: number}}}[], 
+        respLocation: {lat: string, lon: string}): number{
         let participantLocations: any = this.extractParticipantsLocation(cities)
         let distance: number, distances: number[] = [];
         let coords = {
@@ -78,7 +81,7 @@ export class MatchingEngine{
 
     // Extracts participants geolocations as list
     // Retruns a list of objects
-    extractParticipantsLocation(cities: any): Object {
+    extractParticipantsLocation(cities: {location: {location: {latitude: number, longitude: number}}}[]): Object {
         let latsAndlonsMap = []
         let lat, lon;
         for(let i in cities){

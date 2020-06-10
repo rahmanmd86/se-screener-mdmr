@@ -5,7 +5,7 @@ export class MatchingEngineHelper{
     constructor(){}
 
     // Exports the list of objects in to the designated data folder
-    exportToCSV(listOfItems: any, fileName: string) {    
+    exportToCSV(listOfItems: {name: string, distance: number, score: number}[], fileName: string) {    
         const createCsvWriter = require('csv-writer').createObjectCsvWriter;
         const csvWriter = createCsvWriter({
             path: './data/'+fileName,

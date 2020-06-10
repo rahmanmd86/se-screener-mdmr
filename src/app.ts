@@ -6,10 +6,10 @@ const fs = require('fs')
 
 export module Application {
 
-    let matchingEngine = new MatchingEngine()
-    let matchingEngineHelper = new MatchingEngineHelper()
+    const matchingEngine = new MatchingEngine()
+    const matchingEngineHelper = new MatchingEngineHelper()
 
-    console.log("[!] Initiated Matching Engine process...")
+    console.log(`[!] Initiated Matching Engine process...`)
     let resultList = matchingEngine.getMatchedRespondents(participantsData, respondentsData);
     resultList = resultList.sort(matchingEngineHelper.sortByValues('score', 'desc'))
 
