@@ -6,20 +6,20 @@ const fs = require('fs')
 
 export module Application {
 
-    let me = new MatchingEngine()
-    let meh = new MatchingEngineHelper()
+    let matchingEngine = new MatchingEngine()
+    let matchingEngineHelper = new MatchingEngineHelper()
 
     console.log("[!] Initiated Matching Engine process...")
-    let resultList = me.getMatchedRespondents(participantsData, respondentsData);
-    resultList = resultList.sort(meh.sortByValues('score', 'desc'))
+    let resultList = matchingEngine.getMatchedRespondents(participantsData, respondentsData);
+    resultList = resultList.sort(matchingEngineHelper.sortByValues('score', 'desc'))
 
     let fileName = 'matched_respondents.csv'
-    meh.exportToCSV(resultList, fileName);
-    if(!fs.existsSync("./data/"+ fileName +"'")) {
-        console.log("[!] Generated file in path: './data/"+ fileName +"'")
+    matchingEngineHelper.exportToCSV(resultList, fileName);
+    if(!fs.existsSync(`./data/${fileName}`)) {
+        console.log(`[!] Generated file in path: './data/${fileName}`)
     }
     else{
-        console.log('No file found in: ./data/' + fileName)
+        console.log(`No file found in: ./data/${fileName}`)
     }
 }
 

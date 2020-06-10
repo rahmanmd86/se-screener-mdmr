@@ -24,10 +24,10 @@ Please refer to this [Wikipedia Article](https://en.wikipedia.org/wiki/Great-cir
 ## Provided by Md Mahbubur Rahman
 
 ### Summary
-The solution has been developed as simple Node.js application using typescript and other open source npm packages. The project also includes automated unit testing along with the test coverage, viewable as html. The input data file is placed in data folder as well as the output data file whic is generated after finding the matching respondents.
+The solution has been developed as simple Node.js application using typescript and other open source npm packages. The project also includes automated unit testing along with the test coverage, viewable as html. The input data file is placed in data folder as well as the output data file which is generated after finding the matching respondents.
 
 Below are the data points and percentages distribution that has been used to calculate the scores for find a good match.:
-- title match - 60%
+- title match - 50%
 - industry match - 20%
 - distance match - 30%
 
@@ -67,7 +67,7 @@ se-screener-mdmr
         |-- maching_engine.ts
     |-- tests
         |-- matching_engine.test.ts
-        |-- matching_engin.test.ts
+        |-- matching_engine_helper.test.ts
     |-- coverage
         |-- index.html
         ...
@@ -80,7 +80,7 @@ se-screener-mdmr
 
 ### To run the application
 
-- Generate `node_modules` folder in the project install application dependencies by running
+- To generate `node_modules` folder in the project to install the application dependencies, run
 ```
 npm install
 ```
@@ -118,7 +118,7 @@ Tests:       16 passed, 16 total
 Snapshots:   0 total
 Time:        2.126 s
 ```
-Some more tests can be added as part of functional validation such as files with bad and missing input data, files generated with empty values(no match found), etc which is not covered as part of the test automation.
+Some more tests can be added as part of functional validation such as files with bad and missing input data, files generated with empty values(no match found), entry with duplicate records or repetative records etc which is not covered as part of the test automation.
 
 Note: This development has solely been done by Md Mahbubur Rahman with help from online resources like stackoverflow etc.
 
