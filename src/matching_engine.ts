@@ -46,7 +46,7 @@ export class MatchingEngine{
                 });
             }
             else {
-                console.log("[!] Respondent", respondentsData[i].firstName, "is", distance.toFixed(2), "kms away from participants location! Hence excluded from the list...")
+                console.log(`[!] Respondent ${respondentsData[i].firstName} is ${distance.toFixed(2)} kms away from participants location! Hence excluded from the list...`)
             }
         }
 

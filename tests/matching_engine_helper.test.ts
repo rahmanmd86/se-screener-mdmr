@@ -1,9 +1,9 @@
 const fs = require('fs')
 import { MatchingEngineHelper } from '../src/matching_engine_helper';
 
-let meh: any, listOfItems: any;
+let matchingEngineHelper: any, listOfItems: any;
 beforeAll(() =>{
-    meh = new MatchingEngineHelper
+    matchingEngineHelper = new MatchingEngineHelper
     listOfItems = 
     [{
         name: 'John',
@@ -29,11 +29,11 @@ test('Test exportToCSV method in matching engine helpers', async () => {
         score: 35
     }]
 
-    meh.exportToCSV(results, 'test.csv')
+    matchingEngineHelper.exportToCSV(results, 'test.csv')
     let filePath = './data/test.csv'
     expect(fs.existsSync(filePath)).toBeTruthy()
 
-    let result = await meh.readFromCSV(filePath)
+    let result = await matchingEngineHelper.readFromCSV(filePath)
     expect(result).toMatchObject([{
         name: 'Jack',
         distance: '99',
@@ -42,7 +42,7 @@ test('Test exportToCSV method in matching engine helpers', async () => {
 })
 
 test('Tests sortByValues method with desc in matching engine helpers', () => {    
-    let sorted = listOfItems.sort(meh.sortByValues('score', 'desc'))
+    let sorted = listOfItems.sort(matchingEngineHelper.sortByValues('score', 'desc'))
     expect(sorted).toMatchObject(
     [{
         name: 'Greg',
@@ -63,7 +63,7 @@ test('Tests sortByValues method with desc in matching engine helpers', () => {
 });
 
 test('Tests sortByValues method with asc in matching engine helpers', () => {
-    let sorted = listOfItems.sort(meh.sortByValues('score', 'asc'))
+    let sorted = listOfItems.sort(matchingEngineHelper.sortByValues('score', 'asc'))
     expect(sorted).toMatchObject([
         {
             name: 'John',
@@ -85,7 +85,7 @@ test('Tests sortByValues method with asc in matching engine helpers', () => {
 });
 
 test('Tests sortByValues method with asc in matching engine helpers with string value', () => {
-    let sorted = listOfItems.sort(meh.sortByValues('name', 'asc'))
+    let sorted = listOfItems.sort(matchingEngineHelper.sortByValues('name', 'asc'))
     expect(sorted).toMatchObject([
         {
             name: 'Bert',
@@ -107,7 +107,7 @@ test('Tests sortByValues method with asc in matching engine helpers with string 
 });
 
 test('Tests sortByValues method with asc in matching engine helpers with unknown key', () => {
-    let sorted = listOfItems.sort(meh.sortByValues('nokey'))
+    let sorted = listOfItems.sort(matchingEngineHelper.sortByValues('nokey'))
     expect(sorted).toMatchObject([
         {
             name: 'Bert',
@@ -142,7 +142,7 @@ test('Tests sortByValues method with asc in matching engine helpers with same va
         }
     ]
 
-    let sorted = listOfItems.sort(meh.sortByValues('score'))
+    let sorted = listOfItems.sort(matchingEngineHelper.sortByValues('score'))
     expect(sorted).toMatchObject([
         {
             name: 'Greg',

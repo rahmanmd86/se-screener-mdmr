@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "jest",
-    "test-cov": "jest --coverage --silent|| true",
+    "test": "jest --silent",
+    "test-cov": "jest --coverage --silent || true",
     "build": "tsc",
     "start": "ts-node src/app.ts",
     "parse-csv": "./node_modules/csvtojson/bin/csvtojson ./data/respondents_data_test.csv > ./data/respondents_data.json"

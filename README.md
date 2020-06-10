@@ -24,7 +24,7 @@ Please refer to this [Wikipedia Article](https://en.wikipedia.org/wiki/Great-cir
 ## Provided by Md Mahbubur Rahman
 
 ### Summary
-The solution has been developed as simple Node.js application using typescript and other open source npm packages. The project also includes automated unit testing along with the test coverage, viewable as html. The input data file is placed in data folder as well as the output data file whic is generated after finding the matching respondents.
+The solution has been developed as simple Node.js application using typescript and other open source npm packages. The project also includes automated unit testing along with the test coverage, viewable as html. The input data file is placed in data folder as well as the output data file which is generated after finding the matching respondents.
 
 Below are the data points and percentages distribution that has been used to calculate the scores for find a good match.:
 - title match - 60%
@@ -67,7 +67,7 @@ se-screener-mdmr
         |-- maching_engine.ts
     |-- tests
         |-- matching_engine.test.ts
-        |-- matching_engin.test.ts
+        |-- matching_engine_helper.test.ts
     |-- coverage
         |-- index.html
         ...

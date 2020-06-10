@@ -2,10 +2,9 @@ import { MatchingEngine } from '../src/matching_engine';
 import { MatchingEngineHelper } from '../src/matching_engine_helper';
 
 
-let me: any, meh:any, participantsData: any = [], respondentsData: any = [];
+let matchingEngine: any, participantsData: any = [], respondentsData: any = [];
 beforeAll(() =>{
-    me = new MatchingEngine()
-    meh = new MatchingEngineHelper
+    matchingEngine = new MatchingEngine()
     participantsData =
     {
         cities: [
@@ -87,7 +86,7 @@ beforeAll(() =>{
 
 test('Tests getMatchedRespondents function in matching engine, respondents within 100kms', () => {
 
-    let actual = me.getMatchedRespondents(participantsData, respondentsData)
+    let actual = matchingEngine.getMatchedRespondents(participantsData, respondentsData)
     let expected = 
     [
         { name: 'Jefferson', distance: '0.00', score: 90 },
@@ -120,8 +119,7 @@ test('Tests getMatchedRespondents function in matching engine, respondents outsi
             longitude: "-77.0521742"
         }
     ]
-    let actual = me.getMatchedRespondents(participantsData, respondentsData)
-    console.log(actual)
+    let actual = matchingEngine.getMatchedRespondents(participantsData, respondentsData)
     let expected: any = []
 
     expect(actual).toMatchObject(expected)
@@ -131,21 +129,21 @@ test('Tests compare method in matching engine with matching strings', () => {
     let arr1 = ["Developer","Programmer","Architect"]
     let arr2 = ["Developer"]
 
-    expect(me.compare(arr1, arr2)).toBe(1);
+    expect(matchingEngine.compare(arr1, arr2)).toBe(1);
 });
 
 test('Tests compare method in matching engine with mismatching strings', () => {
     let arr1 = ["Developer","Programmer","Architect"]
     let arr2 = ["Jugde"]
 
-    expect(me.compare(arr1, arr2)).toBe(0);
+    expect(matchingEngine.compare(arr1, arr2)).toBe(0);
 });
 
 test('Tests compare method in matching engine with empty strings', () => {
     let arr1 = ["Developer","Programmer","Architect"]
     let arr2 = [""]
 
-    expect(me.compare(arr1, arr2)).toBe(0);
+    expect(matchingEngine.compare(arr1, arr2)).toBe(0);
 });
 
 test('Tests extractParticipantsLocation method in matching engine', () => {
@@ -161,8 +159,9 @@ test('Tests extractParticipantsLocation method in matching engine', () => {
         }
     ]
 
-    let actual = me.extractParticipantsLocation(cities)
+    let actual = matchingEngine.extractParticipantsLocation(cities)
     let expected = [{lat: 38.9071923, lon: -77.0368707}]
+    
     expect(actual).toMatchObject(expected);
 });
 
@@ -180,7 +179,7 @@ test('Tests distanceCalculator method in matching engine with same geolocation f
         lon: -77.0368707
     }
 
-    let distance = me.distanceCalculator(cities, respLoc)
+    let distance = matchingEngine.distanceCalculator(cities, respLoc)
     expect(distance).toBe(0);
 });
 
@@ -198,7 +197,7 @@ test('Tests distanceCalculator method in matching engine with different geolocat
         lon: -77.0368707
     }
 
-    let distance = me.distanceCalculator(cities, respLoc)
+    let distance = matchingEngine.distanceCalculator(cities, respLoc)
     expect(distance).toBeGreaterThan(0);
 });
 
@@ -216,7 +215,7 @@ test('Tests distanceCalculator method in matching engine missing data in partici
         lon: -77.0368707
     }
 
-    let distance = me.distanceCalculator(cities, respLoc)
+    let distance = matchingEngine.distanceCalculator(cities, respLoc)
     expect(distance).toBeGreaterThan(0);
 });
 
@@ -234,6 +233,6 @@ test('Tests distanceCalculator method in matching engine missing data in respond
         lon: -77.0368707
     }
 
-    let distance = me.distanceCalculator(cities, respLoc)
+    let distance = matchingEngine.distanceCalculator(cities, respLoc)
     expect(distance).toBeGreaterThan(0);
 });
